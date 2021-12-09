@@ -5,6 +5,7 @@ import { INestApplication } from '@nestjs/common'
 
 describe('AppController (e2e)', () => {
   let app: INestApplication
+  let httpServer: any
 
   beforeAll(async () => {
     const moduleFixture = await Test.createTestingModule({
@@ -13,12 +14,39 @@ describe('AppController (e2e)', () => {
 
     app = moduleFixture.createNestApplication()
     await app.init()
+    httpServer = app.getHttpServer()
   })
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/weather')
-      .expect(200)
-      .expect('Hello World!')
+  describe('/weather (GET)', () => {
+    it('with no query', async () => {
+      const response = await request(httpServer).get('/weather')
+
+      expect(response.statusCode).toEqual(400)
+    })
+
+    it('with location="new york"', async () => {
+      const response = await request(httpServer)
+        .get('/weather')
+        .query({ location: 'new york' })
+
+      expect(response.statusCode).toEqual(200)
+
+      console.log(response.body)
+
+      expect(response.body.periods).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            name: expect.any(String),
+            temperature: expect.any(String),
+            windSpeed: expect.any(String),
+            windDirection: expect.any(String),
+          }),
+        ]),
+      )
+    })
+  })
+
+  afterAll(async () => {
+    await app.close()
   })
 })

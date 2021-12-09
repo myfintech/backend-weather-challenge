@@ -7,5 +7,4 @@ export type WeatherPeriod = {
   temperature: string
   windSpeed: string
   windDirection: string
-  description: string
 }
