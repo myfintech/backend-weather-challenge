@@ -1,11 +1,11 @@
 export interface WeatherForecastResponse {
-  periods: Array<WeatherPeriod>;
+  periods: Array<WeatherPeriod>
 }
 
 export type WeatherPeriod = {
-  name: string;
-  temperature: string;
-  windSpeed: string;
-  windDirection: string;
-  description: string;
-};
+  name: string
+  temperature: string
+  windSpeed: string
+  windDirection: string
+  description: string
+}

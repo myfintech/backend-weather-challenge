@@ -1,18 +1,18 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { OpenstreetmapService } from './openstreetmap.service';
+import { Test, TestingModule } from '@nestjs/testing'
+import { OpenstreetmapService } from './openstreetmap.service'
 
 describe('OpenstreetmapService', () => {
-  let service: OpenstreetmapService;
+  let service: OpenstreetmapService
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [OpenstreetmapService],
-    }).compile();
+    }).compile()
 
-    service = module.get<OpenstreetmapService>(OpenstreetmapService);
-  });
+    service = module.get<OpenstreetmapService>(OpenstreetmapService)
+  })
 
   it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
-});
+    expect(service).toBeDefined()
+  })
+})

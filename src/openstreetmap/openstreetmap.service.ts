@@ -1,6 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class OpenstreetmapService {
-  async getCoordinates(_location: string) {}
+  async getCoordinates(_location: string) {
+    throw Error('not implemented')
+  }
 }

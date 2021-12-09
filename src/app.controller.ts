@@ -1,7 +1,7 @@
-import { Controller, Get, Query } from '@nestjs/common';
-import { WeathergovService } from './weathergov/weathergov.service';
-import { OpenstreetmapService } from './openstreetmap/openstreetmap.service';
-import { WeatherForecastResponse } from './common/types';
+import { Controller, Get, HttpCode, Query } from '@nestjs/common'
+import { WeathergovService } from './weathergov/weathergov.service'
+import { OpenstreetmapService } from './openstreetmap/openstreetmap.service'
+import { WeatherForecastResponse } from './common/types'
 
 @Controller()
 export class AppController {
@@ -12,18 +12,8 @@ export class AppController {
 
   @Get('weather')
   async getWeather(
-    @Query('location') location,
+    @Query('location') location: string,
   ): Promise<WeatherForecastResponse> {
-    return {
-      periods: [
-        {
-          description: null,
-          name: null,
-          temperature: null,
-          windDirection: null,
-          windSpeed: null,
-        },
-      ],
-    };
+    throw Error('not implemented')
   }
 }

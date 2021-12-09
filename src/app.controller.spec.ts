@@ -1,22 +1,20 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './app.controller';
-import { WeathergovService } from './weathergov/weathergov.service';
-import { OpenstreetmapService } from './openstreetmap/openstreetmap.service';
+import { Test, TestingModule } from '@nestjs/testing'
+import { AppController } from './app.controller'
+import { WeathergovService } from './weathergov/weathergov.service'
+import { OpenstreetmapService } from './openstreetmap/openstreetmap.service'
 
 describe('AppController', () => {
-  let app: TestingModule;
+  let app: TestingModule
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
       controllers: [AppController],
       providers: [WeathergovService, OpenstreetmapService],
-    }).compile();
-  });
+    }).compile()
+  })
 
-  describe('getHello', () => {
-    it('should return "Hello World!"', () => {
-      const appController = app.get<AppController>(AppController);
-      return expect(appController.getWeather('new york')).resolves.toBeTruthy();
-    });
-  });
-});
+  it('should be defined', () => {
+    const appController = app.get<AppController>(AppController)
+    expect(appController).toBeDefined()
+  })
+})

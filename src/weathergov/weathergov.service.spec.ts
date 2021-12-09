@@ -1,18 +1,18 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { WeathergovService } from './weathergov.service';
+import { Test, TestingModule } from '@nestjs/testing'
+import { WeathergovService } from './weathergov.service'
 
 describe('WeathergovService', () => {
-  let service: WeathergovService;
+  let service: WeathergovService
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [WeathergovService],
-    }).compile();
+    }).compile()
 
-    service = module.get<WeathergovService>(WeathergovService);
-  });
+    service = module.get<WeathergovService>(WeathergovService)
+  })
 
   it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
-});
+    expect(service).toBeDefined()
+  })
+})
