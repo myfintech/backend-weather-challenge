@@ -1,4 +1,4 @@
-FROM node:10-stretch
+FROM node:14.18-stretch
 
 WORKDIR /opt/app
 
@@ -6,18 +6,20 @@ RUN apt-get update && \
     apt-get install -y \
   	build-essential
 
-# update npm
-RUN npm i -g npm
+# install pnpm via npm
+RUN npm i -g pnpm
 
-# Copy in source files
+# Copy in source, configuration, and test files
 COPY package.json ./package.json
-COPY package-lock.json ./package-lock.json
-RUN npm i
-
+COPY pnpm-lock.yaml ./pnpm-lock.yaml
+COPY tsconfig.json ./tsconfig.json
+COPY tsconfig.build.json ./tsconfig.build.json
 COPY Makefile ./Makefile
 COPY ./src ./src
+COPY ./test ./test
+
+# install dependencies (and dev-deps) via pnpm
+RUN pnpm i
 
 # clean up
 RUN rm -rf /var/lib/apt/lists/*
-
-RUN pnpm test:watch
