@@ -31,7 +31,15 @@ Behind the scenes, this endpoint will make use of two services to convert the lo
 * Implement both services in order to call the necessary APIs to retrieve required data
 * Implement the controller to invoke the services to orchestrate the necessary API calls and return the final result
 
-# Running the service
+# Running the service locally via pnpm (without containerization)
 
-* Rapid development/testing, run `pnpm test:watch` to have test automatically rerun while making changes
+* To run the test suite in `--watchAll` mode, run `pnpm test:watch` to have test automatically rerun while making changes
 * Running the service, run `pnpm start:dev` to have Node hot-reload file changes in realtime.
+
+# Running the service locally via Make (without containerization)
+* To run the test suite once, run `make test:watch`
+* To run the test suite in `--watchAll` mode, run `make test:watch` to have test automatically rerun while making changes
+
+# Running the service via docker-compose (with containerization)
+
+* to run the service via `docker-compose`, simply run `docker-compose up` and the service will launch with the test suite running in `--watchAll` mode. In this mode, any changes made to the specs or source code will rerun the entire test suite

@@ -1,9 +1,9 @@
-# run the server test suite
+# run the test suite
 test.all:
 	pnpm run test
-.PHONY: server.test.all
+.PHONY: test.all
 
-# run the server test suite and re-run when files change
+# run the test suite and re-run when files change
 test.watch:
 	pnpm run test:watch
-.PHONY: server.test.watch
+.PHONY: test.watch

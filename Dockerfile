@@ -6,7 +6,7 @@ RUN apt-get update && \
     apt-get install -y \
   	build-essential
 
-# install pnpm
+# install pnpm via npm
 RUN npm i -g pnpm
 
 # Copy in source, configuration, and test files
@@ -18,7 +18,7 @@ COPY Makefile ./Makefile
 COPY ./src ./src
 COPY ./test ./test
 
-# install dependencies via pnpm
+# install dependencies (and dev-deps) via pnpm
 RUN pnpm i
 
 # clean up

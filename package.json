@@ -15,7 +15,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
-  "description": "Manages ach files and ach transfers in the MANTL system",
+  "description": "A MANTL assessment for full-stack and backend engineers",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "MANTL Engineering",
   "dependencies": {
