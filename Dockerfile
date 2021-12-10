@@ -1,22 +1,29 @@
-FROM node:14.18-stretch
+FROM node:16.13.1-alpine3.14
 
 WORKDIR /opt/app
 
-RUN apt-get update && \
-    apt-get install -y \
-  	build-essential
+RUN apk add --update \
+    git
 
 # install pnpm via npm
 RUN npm i -g pnpm
 
+# need to init an arbitrary git repo in the image so that jest --watch runs correctly (has a dep on git/hg)
+RUN git init
+
 # Copy in source, configuration, and test files
-COPY package.json ./package.json
-COPY pnpm-lock.yaml ./pnpm-lock.yaml
+COPY ./src ./src
+
+# Copy in test files
+COPY ./test ./test
+
+# Copy in tsconfig files
 COPY tsconfig.json ./tsconfig.json
 COPY tsconfig.build.json ./tsconfig.build.json
-COPY Makefile ./Makefile
-COPY ./src ./src
-COPY ./test ./test
+
+# Copy in package.json & pnpm lock
+COPY package.json ./package.json
+COPY pnpm-lock.yaml ./pnpm-lock.yaml
 
 # install dependencies (and dev-deps) via pnpm
 RUN pnpm i
