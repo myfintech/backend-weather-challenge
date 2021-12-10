@@ -11,7 +11,9 @@ Frameworks included in the project:
 * [Lodash](https://lodash.com/) - Utility framework
 * [Jest](https://jestjs.io/) - Testing framework
 
-# API Structure
+___
+
+## API Structure
 
 There is only a single endpoint exposed by the service.
 
@@ -25,21 +27,28 @@ Behind the scenes, this endpoint will make use of two services to convert the lo
     * `/points/{lat}/{lon}` - Returns the point information (location + station information). We need the grid
       information.
     * `/gridpoints/{gridId}/{gridX),{gridY}/forecast` - Returns the forecast for the location
-
-# Objective
+___
+## Objective
 
 * Implement both services in order to call the necessary APIs to retrieve required data
 * Implement the controller to invoke the services to orchestrate the necessary API calls and return the final result
+___
+## Running the application & specs
+### Running the service locally via pnpm (without containerization)
 
-# Running the service locally via pnpm (without containerization)
-
-* To run the test suite in `--watchAll` mode, run `pnpm test:watch` to have test automatically rerun while making changes
+* To run the test suite in `--watch` mode, run `pnpm test:watch`. 
+  * In this mode, the test suite will run in full once, and then listen for changes. 
+  * If changes are detected, the suite will only rerun the affected specs.
 * Running the service, run `pnpm start:dev` to have Node hot-reload file changes in realtime.
 
-# Running the service locally via Make (without containerization)
+### Running the service locally via Make (without containerization)
 * To run the test suite once, run `make test:watch`
-* To run the test suite in `--watchAll` mode, run `make test:watch` to have test automatically rerun while making changes
+* To run the test suite in `--watch` mode, run `make test:watch`.
+  * In this mode, the test suite will run in full once, and then listen for changes. 
+  * If changes are detected, the suite will only rerun the affected specs.
 
-# Running the service via docker-compose (with containerization)
+### Running the service via docker-compose (with containerization)
 
-* to run the service via `docker-compose`, simply run `docker-compose up` and the service will launch with the test suite running in `--watchAll` mode. In this mode, any changes made to the specs or source code will rerun the entire test suite
+* to run the service via `docker-compose`, simply run `docker-compose up` and the service will launch with the test suite running in `--watch` mode. 
+  * In this mode, the test suite will run in full once, and then listen for changes. 
+  * If changes are detected, the suite will only rerun the affected specs.

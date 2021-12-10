@@ -5,10 +5,9 @@ services:
       context: ./
       dockerfile: ./Dockerfile
 
-    command: make test.watch
+    command: pnpm run test:watch
 
     volumes:
-      - ./Makefile:/opt/app/Makefile
       - ./package.json:/opt/app/package.json
       - ./pnpm-lock.yaml:/opt/app/pnpm-lock.yaml
       - ./src:/opt/app/src
