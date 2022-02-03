@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common'
-import axios from 'axios'
+import axios, { AxiosInstance } from 'axios'
+import { GeoCoordinates } from '../common/types'
 
 @Injectable()
 export class OpenstreetmapService {
-  private httpClient
+  private httpClient: AxiosInstance
 
   constructor() {
     this.httpClient = axios.create({
@@ -11,7 +12,7 @@ export class OpenstreetmapService {
     })
   }
 
-  async getCoordinates(location: string) {
+  async getCoordinates(location: string): Promise<GeoCoordinates> {
     const response = await this.httpClient.get('/search', {
       params: { q: location, format: 'json' },
     })
