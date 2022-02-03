@@ -5,10 +5,10 @@ services:
       context: ./
       dockerfile: ./Dockerfile
 
-    command: pnpm run test:watch
+    command: npm run test:watch
 
     volumes:
       - ./package.json:/opt/app/package.json
-      - ./pnpm-lock.yaml:/opt/app/pnpm-lock.yaml
+      - ./package-lock.json:/opt/app/package-lock.json
       - ./src:/opt/app/src
       - ./test:/opt/app/test

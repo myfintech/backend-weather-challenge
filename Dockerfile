@@ -5,9 +5,6 @@ WORKDIR /opt/app
 RUN apk add --update \
     git
 
-# install pnpm via npm
-RUN npm i -g pnpm
-
 # need to init an arbitrary git repo in the image so that jest --watch runs correctly (has a dep on git/hg)
 RUN git init
 
@@ -21,12 +18,12 @@ COPY ./test ./test
 COPY tsconfig.json ./tsconfig.json
 COPY tsconfig.build.json ./tsconfig.build.json
 
-# Copy in package.json & pnpm lock
+# Copy in package.json & package-lock.json
 COPY package.json ./package.json
-COPY pnpm-lock.yaml ./pnpm-lock.yaml
+COPY package-lock.json ./package-lock.json
 
-# install dependencies (and dev-deps) via pnpm
-RUN pnpm i
+# install dependencies (and dev-deps) via npm
+RUN npm i
 
 # clean up
 RUN rm -rf /var/lib/apt/lists/*
