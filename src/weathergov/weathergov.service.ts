@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class WeathergovService {
-  async getForecast(_latitude: string, _longitude: string) {
+  async getForecast(latitude: string, longitude: string) {
     throw Error('not implemented')
   }
 
-  async getPoint(_latitude: string, _longitude: string) {
+  private async getPoint(latitude: string, longitude: string) {
     throw Error('not implemented')
   }
 }

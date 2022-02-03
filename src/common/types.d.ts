@@ -8,3 +8,8 @@ export type WeatherPeriod = {
   windSpeed: string
   windDirection: string
 }
+
+export type GeoCoordinates = {
+  latitude: string
+  longitude: string
+}

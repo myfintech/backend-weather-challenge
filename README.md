@@ -8,7 +8,6 @@ Frameworks included in the project:
 
 * [NestJS](https://nestjs.com/) - Backend framework, provides IOC/DI for lifecycle management
 * [Axios](https://axios-http.com/docs/intro) - Promise based HTTP client
-* [Lodash](https://lodash.com/) - Utility framework
 * [Jest](https://jestjs.io/) - Testing framework
 
 ___
@@ -34,8 +33,12 @@ ___
 * Implement the controller to invoke the services to orchestrate the necessary API calls and return the final result
 ___
 ## Running the application & specs
-### Running the service locally via pnpm (without containerization)
+### Running the service via docker-compose (with containerization)
+* To run the service via `docker-compose`, simply run `docker-compose up` and the service will launch with the test suite running in `--watch` mode.
+  * In this mode, the test suite will run in full once, and then listen for changes.
+  * If changes are detected, the suite will only rerun the affected specs.
 
+### Running the service locally via pnpm (without containerization)
 * To run the test suite in `--watch` mode, run `pnpm test:watch`. 
   * In this mode, the test suite will run in full once, and then listen for changes. 
   * If changes are detected, the suite will only rerun the affected specs.
@@ -44,11 +47,5 @@ ___
 ### Running the service locally via Make (without containerization)
 * To run the test suite once, run `make test:watch`
 * To run the test suite in `--watch` mode, run `make test:watch`.
-  * In this mode, the test suite will run in full once, and then listen for changes. 
-  * If changes are detected, the suite will only rerun the affected specs.
-
-### Running the service via docker-compose (with containerization)
-
-* to run the service via `docker-compose`, simply run `docker-compose up` and the service will launch with the test suite running in `--watch` mode. 
   * In this mode, the test suite will run in full once, and then listen for changes. 
   * If changes are detected, the suite will only rerun the affected specs.

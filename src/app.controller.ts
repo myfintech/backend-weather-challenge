@@ -6,14 +6,17 @@ import { WeatherForecastResponse } from './common/types'
 @Controller()
 export class AppController {
   constructor(
-    private readonly _weatherGovService: WeathergovService,
-    private readonly _openStreetMapService: OpenstreetmapService,
+    private readonly weatherGovService: WeathergovService,
+    private readonly openStreetMapService: OpenstreetmapService,
   ) {}
 
   @Get('weather')
   async getWeather(
     @Query('location') location: string,
   ): Promise<WeatherForecastResponse> {
+    const { latitude, longitude } =
+      await this.openStreetMapService.getCoordinates(location)
+
     throw Error('not implemented')
   }
 }
