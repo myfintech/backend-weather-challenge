@@ -6,8 +6,8 @@ import { WeatherForecastResponse } from './common/types'
 @Controller()
 export class AppController {
   constructor(
-    private readonly _weatherGovService: WeathergovService,
-    private readonly _openStreetMapService: OpenstreetmapService,
+    private readonly weatherGovService: WeathergovService,
+    private readonly openStreetMapService: OpenstreetmapService,
   ) {}
 
   @Get('weather')
