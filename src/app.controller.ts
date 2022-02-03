@@ -14,6 +14,9 @@ export class AppController {
   async getWeather(
     @Query('location') location: string,
   ): Promise<WeatherForecastResponse> {
+    const { latitude, longitude } =
+      await this.openStreetMapService.getCoordinates(location)
+
     throw Error('not implemented')
   }
 }
