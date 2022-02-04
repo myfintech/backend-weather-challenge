@@ -33,18 +33,18 @@ ___
 * Implement the controller to invoke the services to orchestrate the necessary API calls and return the final result
 ___
 ## Running the application & specs
-### Running the service via docker-compose (with containerization)
-* To run the service via `docker-compose`, simply run `docker-compose up` and the service will launch with the test suite running in `--watch` mode.
+### Running the tests via docker-compose (with containerization)
+* To run the tests via `docker-compose`, simply run `docker-compose up` and the service will launch with the test suite running in `--watch` mode.
   * In this mode, the test suite will run in full once, and then listen for changes.
   * If changes are detected, the suite will only rerun the affected specs.
 
-### Running the service locally via pnpm (without containerization)
-* To run the test suite in `--watch` mode, run `pnpm test:watch`. 
+### Running the tests or service locally via npm (without containerization)
+* To run the test suite in `--watch` mode, run `npm test:watch`. 
   * In this mode, the test suite will run in full once, and then listen for changes. 
   * If changes are detected, the suite will only rerun the affected specs.
-* Running the service, run `pnpm start:dev` to have Node hot-reload file changes in realtime.
+* To start the service, run `npm run start:dev` to have Node hot-reload file changes in realtime.
 
-### Running the service locally via Make (without containerization)
+### Running the tests locally via Make (without containerization)
 * To run the test suite once, run `make test:watch`
 * To run the test suite in `--watch` mode, run `make test:watch`.
   * In this mode, the test suite will run in full once, and then listen for changes. 
