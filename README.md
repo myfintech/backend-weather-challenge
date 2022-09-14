@@ -39,13 +39,19 @@ ___
   * If changes are detected, the suite will only rerun the affected specs.
 
 ### Running the tests or service locally via npm (without containerization)
-* To run the test suite in `--watch` mode, run `npm test:watch`. 
+__Running the test suite__
+* To run the test suite once, run `npm run test`
+* To run the test suite in `--watch` mode, run `npm run test:watch`. 
   * In this mode, the test suite will run in full once, and then listen for changes. 
   * If changes are detected, the suite will only rerun the affected specs.
+* To run the tests in debug mode, run `npm run test:debug`
+
+__Running the service__
 * To start the service, run `npm run start:dev` to have Node hot-reload file changes in realtime.
+* To start the service in debug mode, run `npm run start:debug`
 
 ### Running the tests locally via Make (without containerization)
-* To run the test suite once, run `make test:watch`
-* To run the test suite in `--watch` mode, run `make test:watch`.
+* To run the test suite once, run `make test.all`
+* To run the test suite in `--watch` mode, run `make test.watch`.
   * In this mode, the test suite will run in full once, and then listen for changes. 
   * If changes are detected, the suite will only rerun the affected specs.
