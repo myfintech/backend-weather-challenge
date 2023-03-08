@@ -20,7 +20,7 @@
   "author": "MANTL Engineering",
   "dependencies": {
     "@nestjs/common": "^8.2.3",
-    "@nestjs/core": "^8.2.3",
+    "@nestjs/core": "^9.0.5",
     "@nestjs/platform-express": "^8.2.3",
     "axios": "^0.24.0",
     "reflect-metadata": "^0.1.13",
