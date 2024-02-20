@@ -1,8 +1,6 @@
-import { Injectable } from '@nestjs/common'
 import axios, { AxiosInstance } from 'axios'
 import { GeoCoordinates } from '../common/types'
 
-@Injectable()
 export class OpenstreetmapService {
   private httpClient: AxiosInstance
 
