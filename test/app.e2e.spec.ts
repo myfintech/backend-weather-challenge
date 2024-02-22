@@ -1,37 +1,22 @@
 import * as request from 'supertest'
-import { Test } from '@nestjs/testing'
-import { AppModule } from '../src/app.module'
-import { INestApplication } from '@nestjs/common'
+import app from '../src/app'
 
-describe('AppController (e2e)', () => {
-  let app: INestApplication
-  let httpServer: any
-
-  beforeAll(async () => {
-    const moduleFixture = await Test.createTestingModule({
-      imports: [AppModule],
-    }).compile()
-
-    app = moduleFixture.createNestApplication()
-    await app.init()
-    httpServer = app.getHttpServer()
-  })
+describe('app (e2e)', () => {
+  jest.setTimeout(1_000)
 
   describe('/weather (GET)', () => {
     it('with no query', async () => {
-      const response = await request(httpServer).get('/weather')
+      const response = await request(app).get('/weather')
 
       expect(response.statusCode).toEqual(400)
     })
 
     it('with location="new york"', async () => {
-      const response = await request(httpServer)
+      const response = await request(app)
         .get('/weather')
         .query({ location: 'new york' })
 
       expect(response.statusCode).toEqual(200)
-
-      console.log(response.body)
 
       expect(response.body.periods).toEqual(
         expect.arrayContaining([
@@ -44,9 +29,5 @@ describe('AppController (e2e)', () => {
         ]),
       )
     })
-  })
-
-  afterAll(async () => {
-    await app.close()
   })
 })
