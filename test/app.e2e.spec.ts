@@ -2,6 +2,8 @@ import * as request from 'supertest'
 import app from '../src/app'
 
 describe('app (e2e)', () => {
+  jest.setTimeout(1_000)
+
   describe('/weather (GET)', () => {
     it('with no query', async () => {
       const response = await request(app).get('/weather')
